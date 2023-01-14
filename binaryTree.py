@@ -37,6 +37,17 @@ class BinaryTree:
         
         return elements
 
+#PRE ORDER TRAVERSAL
+    def preOrderTraversal(self):
+        elements = []
+        elements.append(self.data)
+        if self.left:
+            elements += self.left.preOrderTraversal()
+        if self.right:
+            elements += self.right.preOrderTraversal()
+        
+        return elements
+        
 #Create a method for building the actual binary tree
 def buildTree(elements):
     print("Building tree with these elements:",elements)
@@ -49,9 +60,6 @@ def buildTree(elements):
 
 
 countries = ["India","Pakistan","Germany", "USA","China","India","UK","USA"]
-country_tree = buildTree(countries)
-print(country_tree.inOrderTraversal())
-
-
-numbers_tree = buildTree([17, 4, 1, 20, 9, 23, 18, 34])
-print("In order traversal gives this sorted list:",numbers_tree.inOrderTraversal())
+numbers = [7, 5, 12, 3, 6, 4, 13, 8]
+numbersTree = buildTree(numbers)
+print(numbersTree.preOrderTraversal())
