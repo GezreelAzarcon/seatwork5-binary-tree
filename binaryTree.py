@@ -60,17 +60,46 @@ class BinaryTree:
         return elements
     
 #Minimum and Maximum methods
-    def findMin(self):
-        currentRoot = self
-        while currentRoot.left:
-            currentRoot = currentRoot.left
-        print("The minimum element of the tree is: " + str(currentRoot.data))
+    #def findMin(self):
+    #   currentRoot = self
+    #    while currentRoot.left:
+    #        currentRoot = currentRoot.left
+    #    print("The minimum element of the tree is: " + str(currentRoot.data))
     
+    #def findMax(self):
+    #    currentRoot = self
+    #    while currentRoot.right:
+    #        currentRoot = currentRoot.right
+    #    print("The maximum element of the tree is: " + str(currentRoot.data))
+
     def findMax(self):
-        currentRoot = self
-        while currentRoot.right:
-            currentRoot = currentRoot.right
-        print("The maximum element of the tree is: " + str(currentRoot.data))
+        if self.right is None:
+            return self.data
+        return self.right.find_max()
+
+    def findMin(self):
+        if self.left is None:
+            return self.data
+        return self.left.find_min()
+
+    def delete(self, val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            if self.left is None:
+                return self.right
+            if self.right is None:
+                return self.left
+            minVal = self.right.findMin()
+            self.data = minVal
+            self.right = self.right.delete(minVal)
+        return self
         
 #Create a method for building the actual binary tree
 def buildTree(elements):
@@ -86,13 +115,15 @@ def buildTree(elements):
 #myName = ["G","E","Z","R","E","E","L","A","Z","A","R","C","O","N"]
 #myNameTree = buildTree(myName)
 #print(myNameTree.postOrderTraversal())
+#numbers = [2, 12, 14, 42, 3, 31, 3, 11, 65, 10]
+#numbersTree = buildTree(numbers)
+#numbersTree.findMax()
+#numbersTree.findMin()
 
 numbers = [2, 12, 14, 42, 3, 31, 3, 11, 65, 10]
 numbersTree = buildTree(numbers)
+delete = numbersTree.delete(12)
 
-numbersTree.findMax()
-
-numbersTree.findMin()
-
-
-
+print(delete.inOrderTraversal())
+print(delete.preOrderTraversal())
+print(delete.postOrderTraversal())
