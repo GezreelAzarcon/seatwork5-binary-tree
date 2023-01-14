@@ -58,6 +58,19 @@ class BinaryTree:
         elements.append(self.data)
 
         return elements
+    
+#Minimum and Maximum methods
+    def findMin(self):
+        currentRoot = self
+        while currentRoot.left:
+            currentRoot = currentRoot.left
+        print("The minimum element of the tree is: " + str(currentRoot.data))
+    
+    def findMax(self):
+        currentRoot = self
+        while currentRoot.right:
+            currentRoot = currentRoot.right
+        print("The maximum element of the tree is: " + str(currentRoot.data))
         
 #Create a method for building the actual binary tree
 def buildTree(elements):
@@ -70,6 +83,16 @@ def buildTree(elements):
     return root
 
 
-myName = ["G","E","Z","R","E","E","L","A","Z","A","R","C","O","N"]
-myNameTree = buildTree(myName)
-print(myNameTree.postOrderTraversal())
+#myName = ["G","E","Z","R","E","E","L","A","Z","A","R","C","O","N"]
+#myNameTree = buildTree(myName)
+#print(myNameTree.postOrderTraversal())
+
+numbers = [2, 12, 14, 42, 3, 31, 3, 11, 65, 10]
+numbersTree = buildTree(numbers)
+
+numbersTree.findMax()
+
+numbersTree.findMin()
+
+
+
