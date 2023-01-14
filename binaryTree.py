@@ -23,7 +23,7 @@ class BinaryTree:
                 self.right = BinaryTree(data)
 
 #Create a traversal method/s for sorting the nodes
-#IN ORDER TRAVERSAL
+#IN ORDER TRAVERSAL (Left, Root, Right)
     def inOrderTraversal(self):
         elements = []
         #left
@@ -37,7 +37,7 @@ class BinaryTree:
         
         return elements
 
-#PRE ORDER TRAVERSAL
+#PRE ORDER TRAVERSAL (Root, Left, Right)
     def preOrderTraversal(self):
         elements = []
         elements.append(self.data)
@@ -48,7 +48,7 @@ class BinaryTree:
         
         return elements
 
-#POST ORDER TRAVERSAL
+#POST ORDER TRAVERSAL (Left, Right, Root)
     def postOrderTraversal(self):
         elements = []
         if self.left:
@@ -70,7 +70,6 @@ def buildTree(elements):
     return root
 
 
-countries = ["India","Pakistan","Germany", "USA","China","India","UK","USA"]
-numbers = [7, 5, 12, 3, 6, 4, 13, 8]
-numbersTree = buildTree(numbers)
-print(numbersTree.postOrderTraversal())
+myName = ["G","E","Z","R","E","E","L","A","Z","A","R","C","O","N"]
+myNameTree = buildTree(myName)
+print(myNameTree.postOrderTraversal())
